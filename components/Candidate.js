@@ -17,6 +17,36 @@ export default function Candidate(props) {
 		//maximumFractionDigits: 0, // (causes 2500.99 to be printed as $2,501)
 	});
 	useEffect(() => {
+
+		const demHue = {
+			0: "#CFFAFE",
+			1: "#E0F2FE",
+			2: "#DBEAFE",
+			3: "#A5F3FC",
+			4: "#BAE6FD",
+			5: "#BFDBFE",
+			6: "#67E8F9",
+			7: "#7DD3FC",
+			8: "#93C5FD",
+			9: "#22D3EE",
+			10: "#38BDF8",
+			11: "#60A5FA",
+			12: "#06B6D4",
+			13: "#0EA5E9",
+			14: "#3B82F6",
+			15: "#0891B2",
+			16: "#0284C7",
+			17: "#2563EB",
+			18: "#0E7490",
+			19: "#0369A1",
+			20: "#1D4ED8",
+			21: "#075985",
+			22: "#1E40AF",
+			23: "#164E63",
+			24: "#0C4A6E",
+			25: "#1E3A8A",
+		}
+
 		const dHue = {
 			0: "#EFF6FF",
 			1: "#DBEAFE",
@@ -30,6 +60,35 @@ export default function Candidate(props) {
 			9: "#1E40AF",
 			10: "#1E3A8A",
 		};
+
+		const repHue = {
+			0: "#FCE7F3",
+			1: "#FFE4E6",
+			2: "#FEE2E2",
+			3: "#FBCFE8",
+			4: "#FECDD3",
+			5: "#FECACA",
+			6: "#F9A8D4",
+			7: "#FDA4AF",
+			8: "#FCA5A5",
+			9: "#F472B6",
+			10: "#FB7185",
+			11: "#F87171",
+			12: "#EC4899",
+			13: "#F43F5E",
+			14: "#EF4444",
+			15: "#DB2777",
+			16: "#E11D48",
+			17: "#DC2626",
+			18: "#BE185D",
+			19: "#BE123C",
+			20: "#B91C1C",
+			21: "#9D174D",
+			22: "#9F1239",
+			23: "#991B1B",
+			24: "#881337",
+			25: "#7F1D1D",
+		}
 
 		const rHue = {
 			0: "#FEF2F2",
