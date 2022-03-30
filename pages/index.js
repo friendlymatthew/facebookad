@@ -293,7 +293,7 @@ export default function Viz() {
 							/>
 						</Box>
 					</div>
-					<section className=" flex flex-wrap justify-center lg:justify-between">
+					<section className="my-20 flex flex-wrap justify-center">
 						<Candidate id="jb" data={mapData[0]} party="d" />
 						<Candidate id="dt" data={mapData[1]} party="r" />
 					</section>
