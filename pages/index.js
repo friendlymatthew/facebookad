@@ -10,12 +10,14 @@ import Head from "next/head";
 import Footer from "../components/Footer";
 
 export default function Viz() {
-	const [compiled, setCompiled] = useState({});
-	const [secondCompiled, setSecondCompiled] = useState({});
 	const [weekRange, setWeekRange] = useState([10, 20]);
 	const [weeks, setWeeks] = useState([]);
 	const [tableBody, setTableBody] = useState([]);
 	const [startDate, setStartDate] = useState();
+
+	const [startDateString, setStartDateString] = useState("April 18");
+	const [endDateString, setEndDateString] = useState("April 25");
+
 	const [endDate, setEndDate] = useState();
 	const [mapData, setMapData] = useState([]);
 	var formatter = new Intl.NumberFormat("en-US", {
@@ -47,16 +49,27 @@ export default function Viz() {
 			increment = increment + 10;
 		});
 		setWeeks(tempWeek);
-		justWeeks[1] = new Date(justWeeks[1]);
-		justWeeks[2] = new Date(justWeeks[2]);
-		setStartDate(justWeeks[1]);
-		setEndDate(justWeeks[2]);
 
 		search({ fromDate: "2020-04-18", endDate: "2020-04-25" });
 		console.log("LIFECYCLE END");
 	}, []);
 
 	useEffect(() => {
+		const numToMonth = {
+			1: "January",
+			2: "February",
+			3: "March",
+			4: "April",
+			5: "May",
+			6: "June",
+			7: "July",
+			8: "August",
+			9: "September",
+			10: "October",
+			11: "November",
+			12: "December",
+		};
+
 		console.log("WEEK RANGE INIT");
 		console.log("week range", weekRange);
 		let fromIdx = weekRange[0] / 10;
@@ -70,15 +83,20 @@ export default function Viz() {
 			search({ fromDate: "2020-04-18", endDate: "2020-04-25" });
 		}
 
-		{
-			weeks[fromIdx]
-				? setStartDate(`2020-${weeks[fromIdx].label}`)
-				: setStartDate("April 18th");
+		if (weeks[fromIdx]) {
+			setStartDate(`2020-${weeks[fromIdx].label}`);
+			let monthIdx = Number(weeks[fromIdx].label.slice(0,2));
+			setStartDateString(`${numToMonth[monthIdx]} ${weeks[fromIdx].label.slice(3, 5)}`);
+		} else {
+			setStartDate("April 18th");
 		}
-		{
-			weeks[endIdx]
-				? setEndDate(`2020-${weeks[endIdx].label}`)
-				: setEndDate("April 25th, 2020");
+
+		if (weeks[endIdx]) {
+			setEndDate(`2020-${weeks[endIdx].label}`);
+			let monthIdx = Number(weeks[endIdx].label.slice(0, 2));
+			setEndDateString(`${numToMonth[monthIdx]} ${weeks[endIdx].label.slice(3, 5)}`);
+		} else {
+			setEndDate("April 25th");
 		}
 
 		console.log("WEEK RANGE END");
@@ -251,13 +269,20 @@ export default function Viz() {
 						by week, with Sunday being the first day of a week.
 					</div>
 					<section className="flex justify-end mt-10 mb-20 text-white font-sans font-thin space-x-20">
-						<a className="cursor-pointer underline hover:opacity-80">
+						<a
+							href="https://mediaproject.wesleyan.edu/"
+							target="_blank"
+							rel="noreferrer"
+							className="cursor-pointer underline hover:opacity-80"
+						>
 							Wesleyan Media Project
 						</a>
 
 						<a
 							className="cursor-pointer underline hover:opacity-80"
-							href="https://github.com/mostvaluableshipfriendship"
+							target="_blank"
+							rel="noreferrer"
+							href="https://github.com/mostvaluableshipfriendship/facebookad	"
 						>
 							Source Code
 						</a>
@@ -268,7 +293,7 @@ export default function Viz() {
 			<div className="bg-slate-600 text-white flex justify-center py-20">
 				<section className="w-10/12">
 					<div className="text-3xl font-bold font-libre">
-						From {startDate} to {endDate}
+						From {startDateString} to {endDateString}, 2020
 					</div>
 					<div className="flex justify-center">
 						<Box sx={{ width: 1300 }}>
