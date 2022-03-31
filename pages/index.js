@@ -2,10 +2,7 @@ import react, { useState, useEffect, useRef } from "react";
 import { data } from "../data";
 import Box from "@mui/material/Box";
 import Slider from "@mui/material/Slider";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Candidate from "../components/Candidate";
-import { styled } from "@mui/material/styles";
-import Map from "../components/Map";
 import Head from "next/head";
 import Footer from "../components/Footer";
 
@@ -30,14 +27,6 @@ export default function Viz() {
 	});
 
 	let increment = 0;
-
-	const PrettoSlider = styled(Slider)({
-		height: 8,
-
-		"& 	.MuiSlider-track": {
-			backgroundColor: "#FDE047",
-		},
-	});
 
 	useEffect(() => {
 		console.log("LIFECYCLE START");
@@ -85,8 +74,10 @@ export default function Viz() {
 
 		if (weeks[fromIdx]) {
 			setStartDate(`2020-${weeks[fromIdx].label}`);
-			let monthIdx = Number(weeks[fromIdx].label.slice(0,2));
-			setStartDateString(`${numToMonth[monthIdx]} ${weeks[fromIdx].label.slice(3, 5)}`);
+			let monthIdx = Number(weeks[fromIdx].label.slice(0, 2));
+			setStartDateString(
+				`${numToMonth[monthIdx]} ${weeks[fromIdx].label.slice(3, 5)}`
+			);
 		} else {
 			setStartDate("April 18th");
 		}
@@ -94,7 +85,9 @@ export default function Viz() {
 		if (weeks[endIdx]) {
 			setEndDate(`2020-${weeks[endIdx].label}`);
 			let monthIdx = Number(weeks[endIdx].label.slice(0, 2));
-			setEndDateString(`${numToMonth[monthIdx]} ${weeks[endIdx].label.slice(3, 5)}`);
+			setEndDateString(
+				`${numToMonth[monthIdx]} ${weeks[endIdx].label.slice(3, 5)}`
+			);
 		} else {
 			setEndDate("April 25th");
 		}
@@ -304,14 +297,7 @@ export default function Viz() {
 								className="my-10 text-white font-sans text-5xl"
 								step={10}
 								style={{
-									"& .MuiSlider-thumb": {
-										height: 18,
-										width: 18,
-										backgroundColor: "#FEF08A",
-									},
-									"& .MuiSlider-markLabel": {
-										color: "#ffffff",
-									},
+									color: "white",
 								}}
 								min={0}
 								max={300}
@@ -330,22 +316,119 @@ export default function Viz() {
 									<tr className="font-libre text-md bg-slate-800">
 										<th className="py-2 ">State</th>
 										<th
-											className="cursor-pointer underline py-2  hover:opacity-80 transition ease-in duration-50 "
+											className="cursor-pointer  py-2  hover:opacity-80 transition ease-in duration-50 "
 											onClick={handleBidenSort}
 										>
-											Biden Spending ($)
+											<div className="flex justify-center space-x-2 items-center">
+												<div>Biden Spending</div>
+												{bidenSort ? (
+													<svg
+														xmlns="http://www.w3.org/2000/svg"
+														class="h-6 w-6"
+														fill="none"
+														viewBox="0 0 24 24"
+														stroke="currentColor"
+														stroke-width="2"
+													>
+														<path
+															stroke-linecap="round"
+															stroke-linejoin="round"
+															d="M3 4h13M3 8h9m-9 4h9m5-4v12m0 0l-4-4m4 4l4-4"
+														/>
+													</svg>
+												) : (
+													<svg
+														xmlns="http://www.w3.org/2000/svg"
+														class="h-6 w-6"
+														fill="none"
+														viewBox="0 0 24 24"
+														stroke="currentColor"
+														stroke-width="2"
+													>
+														<path
+															stroke-linecap="round"
+															stroke-linejoin="round"
+															d="M3 4h13M3 8h9m-9 4h6m4 0l4-4m0 0l4 4m-4-4v12"
+														/>
+													</svg>
+												)}
+											</div>
 										</th>
 										<th
-											className="cursor-pointer underline py-2  hover:opacity-80 transition ease-in duration-50 "
+											className="cursor-pointer  py-2 flex items-end justify-center space-x-2 hover:opacity-80 transition ease-in duration-50 "
 											onClick={handleTrumpSort}
 										>
-											Trump Spending ($)
+											<div>Trump Spending</div>
+											{trumpSort ? (
+												<svg
+													xmlns="http://www.w3.org/2000/svg"
+													class="h-6 w-6"
+													fill="none"
+													viewBox="0 0 24 24"
+													stroke="currentColor"
+													stroke-width="2"
+												>
+													<path
+														stroke-linecap="round"
+														stroke-linejoin="round"
+														d="M3 4h13M3 8h9m-9 4h9m5-4v12m0 0l-4-4m4 4l4-4"
+													/>
+												</svg>
+											) : (
+												<svg
+													xmlns="http://www.w3.org/2000/svg"
+													class="h-6 w-6"
+													fill="none"
+													viewBox="0 0 24 24"
+													stroke="currentColor"
+													stroke-width="2"
+												>
+													<path
+														stroke-linecap="round"
+														stroke-linejoin="round"
+														d="M3 4h13M3 8h9m-9 4h6m4 0l4-4m0 0l4 4m-4-4v12"
+													/>
+												</svg>
+											)}
 										</th>
 										<th
-											className="cursor-pointer py-2 underline hover:opacity-80 transition ease-in duration-50 "
+											className="cursor-pointer py-2  hover:opacity-80 transition ease-in duration-50 "
 											onClick={handleNetSort}
 										>
-											Net
+											<div className="flex justify-center space-x-2">
+												<div>Net</div>
+												{netSort ? (
+													<svg
+														xmlns="http://www.w3.org/2000/svg"
+														class="h-6 w-6"
+														fill="none"
+														viewBox="0 0 24 24"
+														stroke="currentColor"
+														stroke-width="2"
+													>
+														<path
+															stroke-linecap="round"
+															stroke-linejoin="round"
+															d="M3 4h13M3 8h9m-9 4h9m5-4v12m0 0l-4-4m4 4l4-4"
+														/>
+													</svg>
+												) : (
+													<svg
+														xmlns="http://www.w3.org/2000/svg"
+														class="h-6 w-6"
+														fill="none"
+														viewBox="0 0 24 24"
+														stroke="currentColor"
+														stroke-width="2"
+													>
+														<path
+															stroke-linecap="round"
+															stroke-linejoin="round"
+															d="M3 4h13M3 8h9m-9 4h6m4 0l4-4m0 0l4 4m-4-4v12"
+														/>
+													</svg>
+												)}
+											</div>
 										</th>
 									</tr>
 								</thead>
