@@ -53,7 +53,11 @@ export default function Home() {
 					},
 					track: {
 						color: "#FEF08A",
+						height: "8px",
 					},
+					rail: {
+						height: "8px",
+					}
 				},
 			},
 		},
