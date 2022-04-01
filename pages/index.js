@@ -36,24 +36,24 @@ export default function Viz() {
 			MuiSlider: {
 				styleOverrides: {
 					// Name of the slot
-					
-						// Some CSS
-						markLabel: {
-							color: "white",
-							marginTop: "8px",
-							fontWeight: 400,
-						},
-						markActive: {
-							color: "black",
-						},
-						thumb: {
-							color: "#FEF08A",
-							height: "24px",
-							width: "24px",
-						},
-						track: {
-							color: "#FEF08A",
-						}
+
+					// Some CSS
+					markLabel: {
+						color: "white",
+						marginTop: "8px",
+						fontWeight: 400,
+					},
+					markActive: {
+						color: "black",
+					},
+					thumb: {
+						color: "#FEF08A",
+						height: "24px",
+						width: "24px",
+					},
+					track: {
+						color: "#FEF08A",
+					},
 				},
 			},
 		},
@@ -277,7 +277,7 @@ export default function Viz() {
 			<section className="bg-slate-800 flex justify-center">
 				<div className="w-10/12 mt-20">
 					<div className="font-libre font-bold text-5xl mb-4 text-white">
-						Visualizing Presidential Ad Spending
+						Presidential Campaign Facebook Ad Spending Interface
 					</div>
 					<div className="font-sans text-white text-md font-thin">
 						In its tracking of campaign spending on Facebook, Wesleyan Media
@@ -292,7 +292,7 @@ export default function Viz() {
 						reports on the Facebook Ad Library webpage. We report the spending
 						by week, with Sunday being the first day of a week.
 					</div>
-					<section className="flex justify-end mt-10 mb-20 text-white font-sans font-thin space-x-20">
+					<section className="flex justify-end mt-10 mb-20 text-white font-sans text-md font-thin space-x-20">
 						<a
 							href="https://mediaproject.wesleyan.edu/"
 							target="_blank"
@@ -316,9 +316,6 @@ export default function Viz() {
 
 			<div className="bg-slate-600 text-white flex justify-center py-20">
 				<section className="w-10/12">
-					<div className="text-3xl font-bold font-libre">
-						From {startDateString} to {endDateString}, 2020
-					</div>
 					<div className="flex justify-center">
 						<ThemeProvider theme={theme}>
 							<Box sx={{ width: 1300 }}>
@@ -326,7 +323,7 @@ export default function Viz() {
 									value={weekRange}
 									onChange={handleSliderChange}
 									marks={weeks}
-									className="my-10 text-white font-sans text-5xl"
+									className=" text-white font-sans text-5xl"
 									step={10}
 									style={{
 										color: "white",
@@ -339,6 +336,11 @@ export default function Viz() {
 								/>
 							</Box>
 						</ThemeProvider>
+					</div>
+
+
+					<div className="text-3xl font-bold font-libre text-center my-20">
+						From {startDateString} to {endDateString}, 2020
 					</div>
 					<section className="my-20 flex flex-wrap justify-center">
 						<Candidate id="jb" data={mapData[0]} party="d" />
