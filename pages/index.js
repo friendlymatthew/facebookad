@@ -6,6 +6,8 @@ import Candidate from "../components/Candidate";
 import Head from "next/head";
 import Footer from "../components/Footer";
 
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+
 export default function Viz() {
 	const [weekRange, setWeekRange] = useState([10, 20]);
 	const [weeks, setWeeks] = useState([]);
@@ -27,6 +29,35 @@ export default function Viz() {
 	});
 
 	let increment = 0;
+
+	const theme = createTheme({
+		components: {
+			// Name of the component
+			MuiSlider: {
+				styleOverrides: {
+					// Name of the slot
+					
+						// Some CSS
+						markLabel: {
+							color: "white",
+							marginTop: "8px",
+							fontWeight: 400,
+						},
+						markActive: {
+							color: "black",
+						},
+						thumb: {
+							color: "#FEF08A",
+							height: "24px",
+							width: "24px",
+						},
+						track: {
+							color: "#FEF08A",
+						}
+				},
+			},
+		},
+	});
 
 	useEffect(() => {
 		console.log("LIFECYCLE START");
@@ -289,20 +320,25 @@ export default function Viz() {
 						From {startDateString} to {endDateString}, 2020
 					</div>
 					<div className="flex justify-center">
-						<Box sx={{ width: 1300 }}>
-							<Slider
-								value={weekRange}
-								onChange={handleSliderChange}
-								marks={weeks}
-								className="my-10 text-white font-sans text-5xl"
-								step={10}
-								style={{
-									color: "white",
-								}}
-								min={0}
-								max={300}
-							/>
-						</Box>
+						<ThemeProvider theme={theme}>
+							<Box sx={{ width: 1300 }}>
+								<Slider
+									value={weekRange}
+									onChange={handleSliderChange}
+									marks={weeks}
+									className="my-10 text-white font-sans text-5xl"
+									step={10}
+									style={{
+										color: "white",
+										markLabel: {
+											color: "white",
+										},
+									}}
+									min={0}
+									max={300}
+								/>
+							</Box>
+						</ThemeProvider>
 					</div>
 					<section className="my-20 flex flex-wrap justify-center">
 						<Candidate id="jb" data={mapData[0]} party="d" />
