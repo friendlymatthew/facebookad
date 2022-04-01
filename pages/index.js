@@ -339,10 +339,10 @@ export default function Home() {
 					</div>
 
 
-					<div className="text-3xl font-bold font-libre text-center my-20">
+					<div className="text-3xl font-bold font-libre text-center mt-14">
 						From {startDateString} to {endDateString}, 2020
 					</div>
-					<section className="my-20 flex flex-wrap justify-center">
+					<section className="mt-12 mb-20 flex flex-wrap justify-center">
 						<Candidate id="jb" data={mapData[0]} party="d" />
 						<Candidate id="dt" data={mapData[1]} party="r" />
 					</section>
