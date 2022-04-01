@@ -475,7 +475,7 @@ export default function Viz() {
 										return (
 											<tr
 												key={row.net}
-												className="border-y text-lg bg-gray-100 text-slate-900 border-slate-700 font-sans hover:bg-slate-700 hover:text-white transition ease-in duration-50"
+												className="border-y text-lg bg-gray-100 text-slate-500 border-slate-700 font-sans group hover:bg-slate-800 hover:text-white transition ease-in duration-50"
 											>
 												<th className="font-thin p-1">{row.state}</th>
 												<th className="font-thin p-1">
